@@ -4,7 +4,7 @@ import { useStore } from "../store";
 import { revalidateSingle } from "../utils/revalidation";
 import { Comment, EditedComment } from "../types/types";
 
-const useMutateComment = () => {
+export const useMutateComment = () => {
   const reset = useStore((state) => state.resetEditedComment);
 
   const createCommentMutation = useMutation(

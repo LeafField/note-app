@@ -16,9 +16,9 @@ const queryClient = new QueryClient({
 export default function App({ Component, pageProps, router }: AppProps) {
   const validateSession = useCallback(async () => {
     const user = await supabase.auth.getUser();
-    if (user.data && router.pathname === "/") {
+    if (user.data.user && router.pathname === "/") {
       router.push("/notes");
-    } else if (!user.data && router.pathname !== "/") {
+    } else if (!user.data.user && router.pathname !== "/") {
       router.push("/");
     }
   }, [router]);
