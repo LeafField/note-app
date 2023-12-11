@@ -21,5 +21,25 @@ export const CommentItem: FC<Props> = ({ id, content, user_id }) => {
     getUserId();
   }, []);
 
-  return <div>CommentItem</div>;
+  if (deleteCommentMutation.isLoading) {
+    return <Spinner />;
+  }
+
+  return (
+    <li className="my-3">
+      <span>{content}</span>
+      {userId === user_id && (
+        <div className="float-right ml-20 flex">
+          <PencilAltIcon
+            className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
+            onClick={() => update({ id, content })}
+          />
+          <TrashIcon
+            className="h-5 w-5 cursor-pointer text-blue-500"
+            onClick={() => deleteCommentMutation.mutate(id)}
+          />
+        </div>
+      )}
+    </li>
+  );
 };
