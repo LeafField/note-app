@@ -76,7 +76,7 @@ const NotePage: NextPage<Props> = ({ note }) => {
         ))}
       </ul>
       <CommentForm noteId={note!.id} />
-      <Link href={"/note"} prefetch={false}>
+      <Link href={"/notes"} prefetch={false}>
         <ChevronDoubleLeftIcon className="my-6 h-6 w-6 cursor-pointer text-blue-500" />
       </Link>
     </Layout>
